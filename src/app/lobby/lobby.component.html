@@ -1,0 +1,21 @@
+<div class="gameSearch">
+    <input type="text" [(ngModel)]="searchName" placeholder="Search game"/>
+    <br/>
+    <button [class.active]="order === 'name'"
+        (click)="setOrder('name')">Sort by name
+        <span [hidden]="reverse">▼</span>
+        <span [hidden]="!reverse">▲</span>
+    </button>
+</div>
+
+<ul class="list">
+    <li  class="list-item" *ngFor="let users of Users | userfilter: searchName | orderBy: order:reverse">  
+        <div class="list-content">   
+            <h2 class="name">{{users.name}}</h2>
+            <img 
+                class="img" 
+                src="{{users.icon_2}}" 
+                default="http://leeford.in/wp-content/uploads/2017/09/image-not-found.jpg">
+        </div>
+    </li>
+</ul>
